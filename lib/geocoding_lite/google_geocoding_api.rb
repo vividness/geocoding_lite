@@ -2,7 +2,7 @@ require 'net/http'
 require 'rubygems'
 require 'json'
 
-module Geocode  
+module GeocodingLite  
   class GoogleGeocodingAPI
     API_ENDPOINT = %q(http://maps.googleapis.com/maps/api/geocode/json)
     
@@ -21,13 +21,17 @@ module Geocode
     
     # NOTE: Fix this methods if needed more than just one result
     def self.parse(response)
-      result = JSON.parse(response)['results'].first
+      json   = JSON.parse(response)
+      status = json['status']
+      result = json['results'].first
       
-      output           = {}
-      output[:address] = result['formatted_address']
-      output[:lat]     = result['geometry']['location']['lat']
-      output[:lng]     = result['geometry']['location']['lng']
-      output[:types]   = result['types']
+      raise RuntimeError, "API returned #{status}" if status != 'OK'
+
+      output             = {}
+      output[:address]   = result['formatted_address']
+      output[:latitude]  = result['geometry']['location']['lat']
+      output[:longitude] = result['geometry']['location']['lng']
+      output[:types]     = result['types']
       
       output
     end
