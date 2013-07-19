@@ -13,7 +13,6 @@ module GeocodingLite
       @height    = args[:height]  || 480
       @scale     = args[:scale]   || 1
       @maptype   = args[:maptype] || :roadmap
-      @sensor    = args[:sensor]  || false
       @zoom      = args[:zoom]    || zoom_level(@types)
       
       "#{MAPS_API}#{[size, zoom, scale, maptype, center].join('&')}"
