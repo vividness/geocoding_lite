@@ -1,5 +1,5 @@
 class ::String
-  def locate
+  def geocode
     GeocodingLite.lookup(self)
   end
 end
