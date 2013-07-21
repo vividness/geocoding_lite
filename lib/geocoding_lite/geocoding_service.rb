@@ -39,8 +39,7 @@ module GeocodingLite
       request_uri = "#{@service_url}?address=#{address_enc}&sensor=false"  
       uri = @uri_object.parse(request_uri)
       
-      response = @http_object.get_response(uri)
-      response.body
+      @http_object.get_response(uri).body
     end
   end
 end
