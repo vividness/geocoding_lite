@@ -7,7 +7,9 @@ module GeocodingLite
     
     def lookup(address)
       response = @service.lookup(address)
+      
       @location.map_response(response)
+      @location
     end
   end
 end
