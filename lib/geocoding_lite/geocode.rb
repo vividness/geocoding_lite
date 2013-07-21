@@ -1,19 +1,12 @@
 module GeocodingLite
   class Geocode
-    def initialize(location = nil, api = nil)
+    def initialize(location = nil, service = nil)
       @location = location || Location.new
-      @api      = api || GoogleGeocodingAPI
+      @service  = service  || GoogleGeocodingAPI
     end
     
     def lookup(address)
-      response = @api.lookup(address)
-      
-      @location.address   = response[:address]
-      @location.latitude  = response[:latitude]
-      @location.longitude = response[:longitude]
-      @location.types     = response[:types]
-      
-      @location
+      @service.lookup(address, @location)
     end
   end
 end
