@@ -2,7 +2,7 @@ module GeocodingLite
   class Geocode
     def initialize(location = nil, service = nil)
       @location = location || Location.new
-      @service  = service  || GoogleGeocodingAPI
+      @service  = service  || GeocodingService.new
     end
     
     def lookup(address)
