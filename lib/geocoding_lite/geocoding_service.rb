@@ -4,13 +4,14 @@ require 'json'
 
 module GeocodingLite
   class GeocodingService
-    SERVICE_URI = %q(http://maps.googleapis.com/maps/api/geocode/json)
+    SERVICE_URL = %q(http://maps.googleapis.com/maps/api/geocode/json)
     
-    def initialize(http = nil, uri = nil, json = nil)
+    def initialize(http = nil, uri = nil)
       @http_object = http || Net::HTTP
       @uri_object  = uri  || URI
+      
       @json_object = JSON
-      @endpoint    = SERVICE_URI
+      @endpoint    = SERVICE_URL
     end
     
     def lookup(address)
@@ -20,20 +21,18 @@ module GeocodingLite
     private 
     
     def load_response(raw_response)
-      json   = @json_object.parse(raw_response)
+      json = @json_object.parse(raw_response)
       
       status = json['status']
       raise RuntimeError, "API returned #{status}" if status != 'OK'
-  
-      result = json['results'].first
-      
-      output             = {}
-      output[:address]   = result['formatted_address']
-      output[:latitude]  = result['geometry']['location']['lat']
-      output[:longitude] = result['geometry']['location']['lng']
-      output[:types]     = result['types']
-      
-      output
+ 
+      json['results'].inject([]) do |output, result|
+        output << {
+          :address => result['formatted_address'],
+          :lat     => result['geometry']['location']['lat'],
+          :lng     => result['geometry']['location']['lng'],
+        }
+      end
     end
     
     def send_request(address)
