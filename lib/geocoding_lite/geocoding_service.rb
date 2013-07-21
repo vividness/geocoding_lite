@@ -6,12 +6,11 @@ module GeocodingLite
   class GeocodingService
     SERVICE_URL = %q(http://maps.googleapis.com/maps/api/geocode/json)
     
-    def initialize(http = nil, uri = nil)
-      @http_object = http || Net::HTTP
-      @uri_object  = uri  || URI
-      
-      @json_object = JSON
-      @endpoint    = SERVICE_URL
+    def initialize(http_object = nil, uri_object = nil, service_url = nil, json_parser = nil)
+      @http_object = http_object || Net::HTTP
+      @uri_object  = uri_object  || URI
+      @json_parser = json_parser || JSON
+      @service_url = service_url || SERVICE_URL
     end
     
     def lookup(address)
@@ -21,7 +20,7 @@ module GeocodingLite
     private 
     
     def load_response(raw_response)
-      json = @json_object.parse(raw_response)
+      json = @json_parser.parse(raw_response)
       
       status = json['status']
       raise RuntimeError, "API returned #{status}" if status != 'OK'
@@ -37,7 +36,7 @@ module GeocodingLite
     
     def send_request(address)
       address_enc = @uri_object.encode(address)
-      request_uri = "#{SERVICE_URI}address=#{address_enc}&sensor=false"  
+      request_uri = "#{@service_url}?address=#{address_enc}&sensor=false"  
       uri = @uri_object.parse(request_uri)
       
       response = @http_object.get_response(uri)
