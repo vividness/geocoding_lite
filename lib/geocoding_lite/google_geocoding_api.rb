@@ -6,6 +6,18 @@ module GeocodingLite
   class GoogleGeocodingAPI
     API_ENDPOINT = %q(http://maps.googleapis.com/maps/api/geocode/json)
     
+    attr_accessor :endpoint, :http_object
+    
+    def initialize
+    end
+
+    def config(&block)
+      yield self
+    end
+    
+    def resolve(address)
+    end
+
     def self.lookup(address)
       response = request(address)
       parse(response)
