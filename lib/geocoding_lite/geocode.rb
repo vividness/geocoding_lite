@@ -1,5 +1,5 @@
 module GeocodingLite
-  class Geocode
+  class Geocoding
     def initialize(service = nil)
       @service  = service  || GeocodingService.new
     end
