@@ -4,7 +4,7 @@ require 'geocoding_lite/core_extensions'
 require 'geocoding_lite/version'
 
 module GeocodingLite
-  def self.lookup(address)
+  def self.lookup(location)
     @geocode ||= Geocode.new
     @geocode.lookup(address)
   end
