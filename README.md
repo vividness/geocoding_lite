@@ -2,9 +2,9 @@ Geocoding Lite
 ==============
 The most simplistic geocoding lookup wrapper ever!
 
-How to use
-----------
-Dead simple!
+How to use it
+-------------
+It's dead simple!
 
 ```ruby
 require 'geocoding_lite'
