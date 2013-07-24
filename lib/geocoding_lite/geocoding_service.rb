@@ -25,7 +25,7 @@ module GeocodingLite
       status = json['status']
       raise RuntimeError, "API returned #{status}" if status != 'OK'
  
-      json['results'].inject([]) do |output, result|
+      json['results'].reduce([]) do |output, result|
         output << {
           :address => result['formatted_address'],
           :lat     => result['geometry']['location']['lat'],

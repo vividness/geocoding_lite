@@ -1,36 +1,23 @@
 require 'spec_helper'
 
 describe GeocodingLite::Geocode do
-  let :api do
-    # mock object
-    api = Class.new
+  let(:service) do
+    service = Class.new
     
-    class << api
+    class << service
       def lookup(address)
         {
           :address   => 'ADDRESS',
           :latitude  => 'LATITUDE',
           :longitude => 'LONGITUDE',
-          :types     => ['type1', 'type2']
         }
       end
     end
     
-    api
+    service
   end
 
-  let :location do
-    # mock object
-    location = Object.new
-
-    class << location
-      attr_accessor :address, :latitude, :longitude, :types 
-    end
-
-    location
-  end
-
-  subject { GeocodingLite::Geocode.new(location, api) }
+  subject { GeocodingLite::Geocode.new(service) }
   
   describe '#initialize' do
     it 'returns an instance' do 
@@ -42,9 +29,9 @@ describe GeocodingLite::Geocode do
     it 'resolved an adderss' do 
       returned = subject.lookup('ADDRESS')
 
-      returned.address.should be   == 'ADDRESS'
-      returned.latitude.should be  == 'LATITUDE'
-      returned.longitude.should be == 'LONGITUDE'
+      returned[:address].should be   == 'ADDRESS'
+      returned[:latitude].should be  == 'LATITUDE'
+      returned[:longitude].should be == 'LONGITUDE'
     end
   end
 end

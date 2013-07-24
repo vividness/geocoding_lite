@@ -1,11 +1,14 @@
 require 'spec_helper'
 
-describe GeocodingLite::GoogleGeocodingAPI do
-  describe ''
+describe GeocodingLite::GeocodingService do
+  let(:http_object) do
+    http_object = Object.new
+    def http_object.get_response(uri)
+      self
+    end
 
-  describe '#parse' do
-    it 'parses JSON response' do
-      res =<<-JSON
+    def http_object.body 
+      <<-JSON
 {
    "results" : [
       {
@@ -50,23 +53,48 @@ describe GeocodingLite::GoogleGeocodingAPI do
    "status" : "OK"
 }
 JSON
+    end
 
-    expected = {
-      :address   => 'Australia', 
-      :latitude  => -25.274398, 
-      :longitude => 133.775136, 
-      :types     => [
-        'country', 
-        'political'
-      ]
-    }
+    http_object
+  end
 
-    returned = GeocodingLite::GoogleGeocodingAPI.parse(res)  
-    
-    returned[:address].should be   == expected[:address]
-    returned[:latitude].should be  == expected[:latitude]
-    returned[:longitude].should be == expected[:longitude]
-    returned[:types].should be     == expected[:types]
+  let(:uri_object) do
+    uri_object = Object.new
+    uri_object.instance_eval do
+      def encode(address)
+        address
+      end
+
+      def parse(request_uri)
+        request_uri
+      end
+    end
+
+    uri_object
+  end
+
+  let(:service_url) { 'http://localhost' }
+  let(:json_parser) { JSON }
+  
+  subject do
+    GeocodingLite::GeocodingService.new(http_object, 
+      uri_object, service_url, json_parser
+    )
+  end
+  
+  describe '#initalize' do
+    it 'returns an instance' do
+      subject.should be_kind_of GeocodingLite::GeocodingService 
+    end
+  end
+
+  describe '#lookup' do
+    it 'resolves an address lookup' do
+      result = subject.lookup('Australia')
+
+      result[0][:address].should be_eql 'Australia'
+      result[0][:lat].should be_eql     -25.2743980
+      result[0][:lng].should be_eql     133.7751360
     end
   end
 end
