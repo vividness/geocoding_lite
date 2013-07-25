@@ -50,8 +50,8 @@ Will output this
       }
     ]
 
-Reverse lookup
---------------
+Reverse geocoding
+-----------------
 You can also do reverse lookups. Hooray! For instance, if you're extracting gps coordinates info 
 from your smartphone photo library and you want to see what is the closest address to the 
 location where the photo is taken.
