@@ -2,6 +2,16 @@ Geocoding Lite
 ==============
 The simplest geocoding lookup tool - ever!
 
+What is geocoding? 
+------------------
+Geocoding is the process of finding associated geographic coordinates (often expressed as latitude and longitude) 
+from other geographic data, such as street addresses, or ZIP codes (postal codes). 
+With geographic coordinates the features can be mapped and entered into Geographic Information Systems, 
+or the coordinates can be embedded into media such as digital photographs via geotagging.
+
+http://en.wikipedia.org/wiki/Geocoding
+
+
 Installation
 ------------
 
