@@ -1,17 +1,17 @@
 Geocoding Lite [![Build Status](https://travis-ci.org/mancmelou/geocoding_lite.png?branch=master)](https://travis-ci.org/mancmelou/geocoding_lite) [![Gem Version](https://badge.fury.io/rb/geocoding_lite.png)](http://badge.fury.io/rb/geocoding_lite)
 ==============
-The simplest geocoding lookup tool - ever!
+Lookup addresses, cities and geographical coordinates!
 
 Table of contents
 -----------------
-1. [What is geocoding?](https://github.com/mancmelou/geocoding_lite/#what-is-geocoding-)
-2. [Installation](https://github.com/mancmelou/geocoding_lite/#installation)
-3. [Geocoding in action]()
-4. [Reverse geocoding]()
-5. [Important things to know]()
-6. [Documentation]()
-7. [Contributing]()
-8. [Author]()
+1. [What is geocoding?](https://github.com/mancmelou/geocoding_lite#what-is-geocoding)
+2. [Installation](https://github.com/mancmelou/geocoding_lite#installation)
+3. [Geocoding in action](https://github.com/mancmelou/geocoding_lite#geocoding-in-action)
+4. [Reverse geocoding](https://github.com/mancmelou/geocoding_lite#reverse-geocoding)
+5. [Important things to know](https://github.com/mancmelou/geocoding_lite#important-things-to-know)
+6. [Documentation](https://github.com/mancmelou/geocoding_lite#documentation)
+7. [Contributing](https://github.com/mancmelou/geocoding_lite#contributing)
+8. [Author](https://github.com/mancmelou/geocoding_lite#author)
 
 What is geocoding?
 ------------------
@@ -93,9 +93,21 @@ Should return this:
 }
 ```
 
+Important things to know
+------------------------
+Geocoding Lite is based on Google's geocoding API and therefore it's a subject to certain limitations.
+One of the limitations is that using this library, a user can make up to 2500 requests a day so, please, use 
+it responsibly. For more info please check the link below.
+
+https://developers.google.com/maps/documentation/geocoding/#Limits
+
+Also, if you are looking for more powerful geocoding library I recommend you trying geocoder.
+
+http://www.rubygeocoder.com/
+
 Documentation
 -------------
-The above written is all you need to know! :)
+All text above written is all you need to know! :)
 
 Contributing
 ------------
