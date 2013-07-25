@@ -30,26 +30,26 @@ puts results
 ```
 
 Will output this
-
-    [
-      {
-        :address => "Pico Boulevard, Santa Monica, CA, USA", 
-        :lat     => 34.0176723, 
-        :lng     => -118.4727648, 
-        :types   => ["route"]
-      }, {
-        :address => "West Pico Boulevard, CA, USA", 
-        :lat     => 34.0373139, 
-        :lng     => -118.4343903, 
-        :types   => ["route"]
-      }, {
-        :address => "Santa Monica Boulevard, Santa Monica, CA, USA", 
-        :lat     => 34.023733, 
-        :lng     => -118.485698, 
-        :types   => ["route"]
-      }
-    ]
-
+```ruby
+[
+  {
+    :address => "Pico Boulevard, Santa Monica, CA, USA", 
+    :lat     => 34.0176723, 
+    :lng     => -118.4727648, 
+    :types   => ["route"]
+  }, {
+    :address => "West Pico Boulevard, CA, USA", 
+    :lat     => 34.0373139, 
+    :lng     => -118.4343903, 
+    :types   => ["route"]
+  }, {
+    :address => "Santa Monica Boulevard, Santa Monica, CA, USA", 
+    :lat     => 34.023733, 
+    :lng     => -118.485698, 
+    :types   => ["route"]
+  }
+]
+```
 Reverse geocoding
 -----------------
 You can also do reverse lookups. Hooray! For instance, if you're extracting gps coordinates info 
@@ -73,13 +73,14 @@ puts coordinates.geocoding_lookup.first
 ```
 
 Should return this: 
-
-    {
-      :address => "287 Bedford Avenue, Brooklyn, NY 11211, USA", 
-      :lat     => 40.7140334, 
-      :lng     => -73.9614979, 
-      :types   => ["street_address"]
-    }
+```ruby
+{
+  :address => "287 Bedford Avenue, Brooklyn, NY 11211, USA", 
+  :lat     => 40.7140334, 
+  :lng     => -73.9614979, 
+  :types   => ["street_address"]
+}
+```
 
 Documentation
 -------------
