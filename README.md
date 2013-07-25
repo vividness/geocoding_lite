@@ -9,9 +9,8 @@ Table of contents
 3. [Geocoding in action](https://github.com/mancmelou/geocoding_lite#geocoding-in-action)
 4. [Reverse geocoding](https://github.com/mancmelou/geocoding_lite#reverse-geocoding)
 5. [Important things to know](https://github.com/mancmelou/geocoding_lite#important-things-to-know)
-6. [Documentation](https://github.com/mancmelou/geocoding_lite#documentation)
-7. [Contributing](https://github.com/mancmelou/geocoding_lite#contributing)
-8. [Author](https://github.com/mancmelou/geocoding_lite#author)
+6. [Contributing](https://github.com/mancmelou/geocoding_lite#contributing)
+7. [Author](https://github.com/mancmelou/geocoding_lite#author)
 
 What is geocoding?
 ------------------
@@ -105,10 +104,6 @@ https://developers.google.com/maps/documentation/geocoding/#Limits
 Also, if you are looking for more powerful geocoding library I recommend you trying geocoder.
 
 http://www.rubygeocoder.com/
-
-Documentation
--------------
-All text written above is all you need to know! :)
 
 Contributing
 ------------
