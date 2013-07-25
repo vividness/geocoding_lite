@@ -63,8 +63,10 @@ require 'geocoding_lite'
 
 # Coordinates of Brookly NY.
 # Note that when doing reverse geocoding you need 
-# to put your coordinates in an array. The size of array
-# is 2 elements.
+# to put your coordinates in an array. 
+# The size of array is 2 elements.
+#   coordinates[0] for lattitude
+#   coordinates[1] for longitude
 coordinates = [40.714224, -73.961452]
 
 puts coordinates.geocoding_lookup.first
