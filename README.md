@@ -1,4 +1,4 @@
-Geocoding Lite
+Geocoding Lite [![Build Status](https://travis-ci.org/mancmelou/geocoding_lite.png?branch=master)](https://travis-ci.org/mancmelou/geocoding_lite) [![Gem Version](https://badge.fury.io/rb/geocoding_lite.png)](http://badge.fury.io/rb/geocoding_lite)
 ==============
 The simplest geocoding lookup tool - ever!
 
