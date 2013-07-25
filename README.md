@@ -1,6 +1,6 @@
 Geocoding Lite [![Build Status](https://travis-ci.org/mancmelou/geocoding_lite.png?branch=master)](https://travis-ci.org/mancmelou/geocoding_lite) [![Gem Version](https://badge.fury.io/rb/geocoding_lite.png)](http://badge.fury.io/rb/geocoding_lite)
 ==============
-Lookup addresses, cities and geographical coordinates
+Lookup addresses, zip codes, cities and geographical coordinates.
 
 Table of contents
 -----------------
