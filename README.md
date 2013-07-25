@@ -2,7 +2,18 @@ Geocoding Lite [![Build Status](https://travis-ci.org/mancmelou/geocoding_lite.p
 ==============
 The simplest geocoding lookup tool - ever!
 
-What is geocoding? 
+Table of contents
+-----------------
+1. [What is geocoding?](https://github.com/mancmelou/geocoding_lite/#what-is-geocoding-)
+2. [Installation](https://github.com/mancmelou/geocoding_lite/#installation)
+3. [Geocoding in action]()
+4. [Reverse geocoding]()
+5. [Important things to know]()
+6. [Documentation]()
+7. [Contributing]()
+8. [Author]()
+
+What is geocoding?
 ------------------
 Geocoding is the process of finding associated geographic coordinates (often expressed as latitude and longitude) 
 from other geographic data, such as street addresses, or ZIP codes (postal codes). 
@@ -17,8 +28,8 @@ Installation
 
     gem install geocoding_lite
    
-How to use it
--------------
+Geocoding in action
+-------------------
 It's super simple! Follow the example: 
 
 ```ruby
