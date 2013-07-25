@@ -31,6 +31,7 @@ module GeocodingLite
           :address => result['formatted_address'],
           :lat     => result['geometry']['location']['lat'],
           :lng     => result['geometry']['location']['lng'],
+          :types   => result['types']
         }
       end
     end
