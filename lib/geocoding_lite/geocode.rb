@@ -4,8 +4,8 @@ module GeocodingLite
       @service  = service  || GeocodingService.new
     end
     
-    def lookup(address)
-      @service.lookup(address)
+    def lookup(location)
+      @service.lookup(location)
     end
   end
 end

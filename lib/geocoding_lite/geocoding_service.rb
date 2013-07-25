@@ -13,17 +13,18 @@ module GeocodingLite
       @service_url = service_url || SERVICE_URL
     end
     
-    def lookup(address)
-      load_response(send_request(address))
+    def lookup(location)
+      load_response(send_request(location))
     end
     
     private 
-    
+
     def load_response(raw_response)
       json = @json_parser.parse(raw_response)
       
       status = json['status']
-      raise RuntimeError, "API returned #{status}" if status != 'OK'
+      raise RuntimeError, "API returned #{status}" if 
+        status != 'OK' && status != 'ZERO_RESULTS'
  
       json['results'].reduce([]) do |output, result|
         output << {
@@ -34,10 +35,20 @@ module GeocodingLite
       end
     end
     
-    def send_request(address)
-      address_enc = @uri_object.encode(address)
-      request_uri = "#{@service_url}?address=#{address_enc}&sensor=false"  
-      uri = @uri_object.parse(request_uri)
+    def prepare_params(location)
+      url  = "#{@service_url}?"
+
+      url << "address=#{@uri_object.encode(location)}" if
+        location.kind_of? String
+
+      url << "latlng=#{location.join(',')}" if
+        location.kind_of? Array
+
+      url << '&sensor=false'
+    end
+
+    def send_request(location)
+      uri = @uri_object.parse(prepare_params(location))
       
       @http_object.get_response(uri).body
     end

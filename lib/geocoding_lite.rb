@@ -6,6 +6,6 @@ require 'geocoding_lite/version'
 module GeocodingLite
   def self.lookup(location)
     @geocode ||= Geocode.new
-    @geocode.lookup(address)
+    @geocode.lookup(location)
   end
 end
