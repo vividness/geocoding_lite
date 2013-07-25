@@ -1,6 +1,6 @@
 Geocoding Lite [![Build Status](https://travis-ci.org/mancmelou/geocoding_lite.png?branch=master)](https://travis-ci.org/mancmelou/geocoding_lite) [![Gem Version](https://badge.fury.io/rb/geocoding_lite.png)](http://badge.fury.io/rb/geocoding_lite)
 ==============
-Lookup addresses, cities and geographical coordinates!
+Lookup addresses, cities and geographical coordinates
 
 Table of contents
 -----------------
@@ -61,6 +61,7 @@ Will output this
   }
 ]
 ```
+
 Reverse geocoding
 -----------------
 You can also do reverse lookups. Hooray! For instance, if you're extracting gps coordinates info 
@@ -107,7 +108,7 @@ http://www.rubygeocoder.com/
 
 Documentation
 -------------
-All text above written is all you need to know! :)
+All text written above is all you need to know! :)
 
 Contributing
 ------------
