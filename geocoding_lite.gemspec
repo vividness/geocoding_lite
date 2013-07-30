@@ -1,7 +1,7 @@
 Gem::Specification.new do |s| 
   s.name        = 'geocoding_lite'
-  s.version     = '0.0.1'
-  s.date        = '2013-07-23'
+  s.version     = '0.1.0'
+  s.date        = '2013-07-30'
   s.summary     = 'Geocoding Lite'
   s.description = 'The simplest geocoding lookup tool - ever!'
   s.license     = 'MIT'
@@ -15,6 +15,6 @@ Gem::Specification.new do |s|
     lib/geocoding_lite/geocoding_service.rb 
     lib/geocoding_lite/version.rb
   )
-  
+  s.add_dependency('json', '>= 1.8.0')
   s.require_paths = ['lib']
 end
