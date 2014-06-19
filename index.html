@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Geocoding lite by mancmelou</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Geocoding lite</h1>
+        <p></p>
+
+        <p class="view"><a href="https://github.com/mancmelou/geocoding_lite">View the Project on GitHub <small>mancmelou/geocoding_lite</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/mancmelou/geocoding_lite/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/mancmelou/geocoding_lite/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/mancmelou/geocoding_lite">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="geocoding-lite" class="anchor" href="#geocoding-lite"><span class="octicon octicon-link"></span></a>Geocoding Lite</h1>
+
+<p>Lookup addresses, zip codes, cities and geographical coordinates.</p>
+
+<p><a href="https://travis-ci.org/mancmelou/geocoding_lite"><img src="https://travis-ci.org/mancmelou/geocoding_lite.png?branch=master" alt="Build Status"></a> <a href="http://badge.fury.io/rb/geocoding_lite"><img src="https://badge.fury.io/rb/geocoding_lite.png" alt="Gem Version"></a></p>
+
+<h2>
+<a name="table-of-contents" class="anchor" href="#table-of-contents"><span class="octicon octicon-link"></span></a>Table of contents</h2>
+
+<ol>
+<li><a href="https://github.com/mancmelou/geocoding_lite#what-is-geocoding">What is geocoding?</a></li>
+<li><a href="https://github.com/mancmelou/geocoding_lite#installation">Installation</a></li>
+<li><a href="https://github.com/mancmelou/geocoding_lite#geocoding-in-action">Geocoding in action</a></li>
+<li><a href="https://github.com/mancmelou/geocoding_lite#reverse-geocoding">Reverse geocoding</a></li>
+<li><a href="https://github.com/mancmelou/geocoding_lite#important-things-to-know">Important things to know</a></li>
+<li><a href="https://github.com/mancmelou/geocoding_lite#contributing">Contributing</a></li>
+<li><a href="https://github.com/mancmelou/geocoding_lite#author">Author</a></li>
+</ol><h2>
+<a name="what-is-geocoding" class="anchor" href="#what-is-geocoding"><span class="octicon octicon-link"></span></a>What is geocoding?</h2>
+
+<p>Geocoding is the process of finding associated geographic coordinates (often expressed as latitude and longitude) 
+from other geographic data, such as street addresses, or ZIP codes (postal codes). 
+With geographic coordinates the features can be mapped and entered into Geographic Information Systems, 
+or the coordinates can be embedded into media such as digital photographs via geotagging.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Geocoding">http://en.wikipedia.org/wiki/Geocoding</a></p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<pre><code>gem install geocoding_lite
+</code></pre>
+
+<h2>
+<a name="geocoding-in-action" class="anchor" href="#geocoding-in-action"><span class="octicon octicon-link"></span></a>Geocoding in action</h2>
+
+<p>It's super simple! Follow the example: </p>
+
+<div class="highlight highlight-ruby"><pre><span class="nb">require</span> <span class="s1">'geocoding_lite'</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="s1">'12783 Pico Blvd, Santa Monica'</span><span class="o">.</span><span class="n">geocoding_lookup</span>
+
+<span class="nb">puts</span> <span class="n">results</span>
+</pre></div>
+
+<p>Will output this</p>
+
+<div class="highlight highlight-ruby"><pre><span class="o">[</span>
+  <span class="p">{</span>
+    <span class="ss">:address</span> <span class="o">=&gt;</span> <span class="s2">"Pico Boulevard, Santa Monica, CA, USA"</span><span class="p">,</span> 
+    <span class="ss">:lat</span>     <span class="o">=&gt;</span> <span class="mi">34</span><span class="o">.</span><span class="mo">0176723</span><span class="p">,</span> 
+    <span class="ss">:lng</span>     <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">118</span><span class="o">.</span><span class="mi">4727648</span><span class="p">,</span> 
+    <span class="ss">:types</span>   <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">"route"</span><span class="o">]</span>
+  <span class="p">},</span> <span class="p">{</span>
+    <span class="ss">:address</span> <span class="o">=&gt;</span> <span class="s2">"West Pico Boulevard, CA, USA"</span><span class="p">,</span> 
+    <span class="ss">:lat</span>     <span class="o">=&gt;</span> <span class="mi">34</span><span class="o">.</span><span class="mo">037313</span><span class="mi">9</span><span class="p">,</span> 
+    <span class="ss">:lng</span>     <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">118</span><span class="o">.</span><span class="mi">4343903</span><span class="p">,</span> 
+    <span class="ss">:types</span>   <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">"route"</span><span class="o">]</span>
+  <span class="p">},</span> <span class="p">{</span>
+    <span class="ss">:address</span> <span class="o">=&gt;</span> <span class="s2">"Santa Monica Boulevard, Santa Monica, CA, USA"</span><span class="p">,</span> 
+    <span class="ss">:lat</span>     <span class="o">=&gt;</span> <span class="mi">34</span><span class="o">.</span><span class="mo">023733</span><span class="p">,</span> 
+    <span class="ss">:lng</span>     <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">118</span><span class="o">.</span><span class="mi">485698</span><span class="p">,</span> 
+    <span class="ss">:types</span>   <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">"route"</span><span class="o">]</span>
+  <span class="p">}</span>
+<span class="o">]</span>
+</pre></div>
+
+<h2>
+<a name="reverse-geocoding" class="anchor" href="#reverse-geocoding"><span class="octicon octicon-link"></span></a>Reverse geocoding</h2>
+
+<p>You can also do reverse lookups. Hooray! For instance, if you're extracting gps coordinates info 
+from your smartphone photo library and you want to see what is the closest address to the 
+location where the photo is taken.</p>
+
+<p>See the following example: </p>
+
+<div class="highlight highlight-ruby"><pre><span class="nb">require</span> <span class="s1">'geocoding_lite'</span>
+
+<span class="c1"># Coordinates of Brookly NY.</span>
+<span class="c1"># Note that when doing reverse geocoding you need </span>
+<span class="c1"># to put your coordinates in an array. </span>
+<span class="c1"># The size of array is 2 elements.</span>
+<span class="c1">#   coordinates[0] for lattitude</span>
+<span class="c1">#   coordinates[1] for longitude</span>
+<span class="n">coordinates</span> <span class="o">=</span> <span class="o">[</span><span class="mi">40</span><span class="o">.</span><span class="mi">714224</span><span class="p">,</span> <span class="o">-</span><span class="mi">73</span><span class="o">.</span><span class="mi">961452</span><span class="o">]</span>
+
+<span class="nb">puts</span> <span class="n">coordinates</span><span class="o">.</span><span class="n">geocoding_lookup</span><span class="o">.</span><span class="n">first</span>
+</pre></div>
+
+<p>Should return this: </p>
+
+<div class="highlight highlight-ruby"><pre><span class="p">{</span>
+  <span class="ss">:address</span> <span class="o">=&gt;</span> <span class="s2">"287 Bedford Avenue, Brooklyn, NY 11211, USA"</span><span class="p">,</span> 
+  <span class="ss">:lat</span>     <span class="o">=&gt;</span> <span class="mi">40</span><span class="o">.</span><span class="mi">7140334</span><span class="p">,</span> 
+  <span class="ss">:lng</span>     <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">73</span><span class="o">.</span><span class="mi">9614979</span><span class="p">,</span> 
+  <span class="ss">:types</span>   <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">"street_address"</span><span class="o">]</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="important-things-to-know" class="anchor" href="#important-things-to-know"><span class="octicon octicon-link"></span></a>Important things to know</h2>
+
+<p>Geocoding Lite is based on Google's geocoding API and therefore it's a subject to certain limitations.
+One of the limitations is that using this library, a user can make up to 2500 requests a day so, please, use 
+it responsibly. For more info please check the link below.</p>
+
+<p><a href="https://developers.google.com/maps/documentation/geocoding/#Limits">https://developers.google.com/maps/documentation/geocoding/#Limits</a></p>
+
+<p>Also, if you are looking for more powerful geocoding library I recommend you trying geocoder.</p>
+
+<p><a href="http://www.rubygeocoder.com/">http://www.rubygeocoder.com/</a></p>
+
+<h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Any help on this project is very welcome. Please feel free to fork, modify and 
+make pull requests. Also make sure you check the TODO file when the file is present in the repository. </p>
+
+<h2>
+<a name="author" class="anchor" href="#author"><span class="octicon octicon-link"></span></a>Author</h2>
+
+<p>Geocoding Lite was written by Vladimir Ivic (vladimir.ivic at icloud.com) and is
+released under the MIT license.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/mancmelou">mancmelou</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
